@@ -34,7 +34,7 @@ if ($linha = $res->fetch_assoc()) {
         echo "<h1>Senha errada</h1><a href='index.php' class='back-button'>Voltar</a>";
     }
 } else {
-    echo "<h1>Usuario nao encontrado: $email</h1><a href='index.php' class='back-button'>Voltar</a>";
+    echo "<h1>Usuário não encontrado</h1><a href='index.php' class='back-button'>Voltar</a>";
 }
 ?>
 
