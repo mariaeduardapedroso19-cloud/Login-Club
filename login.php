@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-$conexao = new mysqli("127.0.0.1", "root", "root", "meu_projeto", 3306);
+$conexao = new mysqli("db", "root", "root", "login_club", 3306);
 if ($conexao->connect_error) { die("Erro: ".$conexao->connect_error); }
 
 $email = $_POST['email'] ?? '';
@@ -15,7 +15,9 @@ $res = $stmt->get_result();
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <link rel="stylesheet" href="styles.css?v=<?php echo time(); ?>">
+  <title>Login Club</title>
 </head>
 <body>
 
@@ -31,10 +33,26 @@ if ($linha = $res->fetch_assoc()) {
         </div>
 <?php
     } else {
-        echo "<h1>Senha errada</h1><a href='index.php' class='back-button'>Voltar</a>";
+?>
+        <div class="erro">
+            <h1>Login inválido e/ou senha incorreta</h1>
+            <p>Tente novamente, Maria.</p>
+            <div class="back-link">
+                <a href="index.php" class="back-button">Voltar</a>
+            </div>
+        </div>
+<?php
     }
 } else {
-    echo "<h1>Usuário não encontrado</h1><a href='index.php' class='back-button'>Voltar</a>";
+?>
+        <div class="erro">
+            <h1>Login inválido e/ou senha incorreta</h1>
+            <p>Usuário não encontrado. Tente novamente.</p>
+            <div class="back-link">
+                <a href="index.php" class="back-button">Voltar</a>
+            </div>
+        </div>
+<?php
 }
 ?>
 
