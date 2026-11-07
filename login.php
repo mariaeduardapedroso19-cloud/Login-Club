@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-$conexao = new mysqli("db", "root", "root", "meu_projeto", 3306);
+$conexao = new mysqli("mysql-login-2", "root", "root", "login_club", 3306);
 if ($conexao->connect_error) { die("Erro: ".$conexao->connect_error); }
 
 $email = $_POST['email'] ?? '';
