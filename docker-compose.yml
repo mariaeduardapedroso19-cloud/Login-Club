@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: meu_projeto
+    ports:
+      - "3306:3306"
+  web:
+    image: php:8.2-apache
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+
